@@ -15,6 +15,8 @@ from server_pkg.models import User
 from server_pkg.forms import login_form, register_form
 import os
 import imghdr
+import sql as SQL
+import server_pkg.essentials as ess
 # from flask_dropzone import Dropzone
 # from flask_uploads import UploadSet, configure_uploads, IMAGES, patch_request_class
 
@@ -115,6 +117,16 @@ def register():
 def logout():
     logout_user()
     return redirect(url_for('login'))
+
+@app.route("/admin/<int:check>")
+@app.route("/admin")
+# @ess.admin_required
+def admin_dashboard(check=None):
+    print("init")
+    if check:
+        
+        return("ok")
+    return("ok")
 
 
 @app.route("/cart", methods=["GET"], strict_slashes=False)
