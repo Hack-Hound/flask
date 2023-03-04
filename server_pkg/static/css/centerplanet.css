@@ -143,14 +143,3 @@ body {
     }
 
 }
-
-.navbar {
-    top: 0;
-    position: absolute;
-    ;
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-direction: column;
-}

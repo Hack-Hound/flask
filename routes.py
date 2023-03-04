@@ -135,20 +135,25 @@ def contact():
     return render_template("contact.html")
 
 
+@app.route("/qrcodegen", methods=["GET"], strict_slashes=False)
+def qrcodegen():
+    return render_template("qrcodegen.html")
+
+
 @app.route("/cart", methods=["GET"], strict_slashes=False)
 @app.route("/cart/<int:src>", methods=["GET"], strict_slashes=False)
 def cart(src=None):
     if src == 1:
-        type=request.args.get('type')
-        item_id=request.args.get('item_id')
-        if type=="add":
-            DB_Manager().AddToCart(ess.fl.current_user.get_id(),item_id)
-        elif type=="remove":
-            DB_Manager().RemoveFromCart(ess.fl.current_user.get_id(),item_id)
-        elif type=="delete":
-            DB_Manager().DeleteFromCart(ess.fl.current_user.get_id(),item_id)
-        return render_template('cart.html',items=DB_Manager().QuarryOrderByUser_ID(ess.fl.current_user.get_id()))
-    return render_template('cart.html',items=DB_Manager().QuarryOrderByUser_ID(ess.fl.current_user.get_id()))
+        type = request.args.get('type')
+        item_id = request.args.get('item_id')
+        if type == "add":
+            DB_Manager().AddToCart(ess.fl.current_user.get_id(), item_id)
+        elif type == "remove":
+            DB_Manager().RemoveFromCart(ess.fl.current_user.get_id(), item_id)
+        elif type == "delete":
+            DB_Manager().DeleteFromCart(ess.fl.current_user.get_id(), item_id)
+        return render_template('cart.html', items=DB_Manager().QuarryOrderByUser_ID(ess.fl.current_user.get_id()))
+    return render_template('cart.html', items=DB_Manager().QuarryOrderByUser_ID(ess.fl.current_user.get_id()))
     return("ok")
 
 
