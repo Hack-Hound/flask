@@ -1,0 +1,176 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #ff5722;
+}
+.section{
+    width: 100%;
+    height: 100vh;
+    display : flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+    overflow: hidden;
+}
+.video-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.color-overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color:black ;
+    width: 100%;
+    height: 100vh;
+    opacity: 0.7;
+}
+.container
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    padding: 20px;
+    border-radius: 20px;
+    transform: translate(-50%,-50%);
+    border: 2.5px solid #ff5722;
+    box-shadow: -5px -5px 15px rgba(255,255,255,0.1),
+    5px 5px 15px rgba(0,0,0,35),
+    inset -5px -5px 15px rgba(255,255,255,0.1),
+    inset 5px 5px 15px rgba(0,0,0,35);
+
+}
+
+.container .form
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 25px;
+}
+.container .form.signin,
+.container.signinForm .form.signup
+{
+    display: none;
+
+}
+.container.signinForm .form.signin
+{
+    display: flex;
+}
+.container .form h2
+{
+    color: #fff;
+    font-weight: 500;
+    letter-spacing:0.1em;
+}
+.container .form .inputBox
+{
+    position: relative;
+    width: 360px;
+    padding: 5px;
+}
+.container .form .inputBox input
+{
+    padding: 12px 10px 12px 48px;
+    border: none;
+    width: 100%;
+    background: #ff5722;
+    border: 1px solid rgba(0,0,0,0.1);
+    color: #fff;
+    font-weight: 300;
+    border-radius: 25px;
+    font-size: 1em;
+    box-shadow: -5px -5px 15px rgba(255,255,255,0.1),
+    5px 5px 15px rgba(0,0,0,0.35);
+    transition: 0.5s;
+    outline: none;
+
+}
+.container .form .inputBox span
+{
+    position: absolute;
+    left:0;
+    padding:12px 10px 12px 48px;
+    pointer-events: none;
+    font-size: 1em;
+    font-weight: 300;
+    transition: 0.5s;
+    letter-spacing: 0.05em;
+    color: rgba(255,255,255,0.5)
+
+}
+.container .form .inputBox input:valid ~span,
+.container .form .inputBox input:focus ~span
+{
+    color:#00dfc4;
+    border: 1px solid #00dfc4;
+    background: #ff5722;
+    transform: translateX(25px) translateY(-7px);
+    font-size: 0.6em;
+    padding: 0 8px;
+    border-radius:10px;
+    letter-spacing: 0.1em;
+}
+.container .form .inputBox input:valid,
+.container .form .inputBox input:focus
+{
+    border: 1px solid #00dfc4;
+
+}
+.container .form .inputBox i
+{
+    position: absolute;
+    top: 15px;
+    left: 16px;
+    width: 25px;
+    padding-right: 8px;
+    padding: 4px 0;
+    color: #00dfc4;
+    border-right:1px solid #00dfc4;
+}
+
+.container .form .inputBox input[type="submit"]
+{
+    background-color: #00dfc4;
+    color: black;
+    padding: 10px 0;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: -5px -5px 15px rgba(255,255,255,0.1),
+    5px 5px 15px rgba(0,0,0,35),
+    inset -5px -5px 15px rgba(255,255,255,0.1),
+    inset 5px 5px 15px rgba(0,0,0,35);
+;
+}
+
+.container .form p
+{
+    color: rgba(255,255,255,0.5);
+    font-size: 0.75em;
+    font-weight: 300;
+}
+.container .form p a
+{
+    font-weight: 500;
+    color:#fff;
+
+}
