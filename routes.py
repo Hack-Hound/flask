@@ -125,8 +125,8 @@ def cart():
 
 @app.route("/about", methods=["GET"], strict_slashes=False)
 def about():
-    pass
-    return("ok")
+    return render_template('about.html')
+    # return("ok")
 
 
 @app.route("/checkout", methods=("GET", "POST"), strict_slashes=False)
