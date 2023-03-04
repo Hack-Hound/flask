@@ -127,7 +127,7 @@
 
                     <!-- Right part of contact which will have form -->
                     <div class="contact-right">
-                        <form action="https://formsubmit.co/sagarwadhwa888@gmail.com" method="POST">
+                        <form action="{{ request.path }}" method="POST">
                             <input type="text" name="name" placeholder="Your Name" required>
                             <input type="email" name="email" placeholder="Your Email" required>
                             <textarea name="message" rows="6" placeholder="Your Message"></textarea>

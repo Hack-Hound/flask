@@ -114,7 +114,7 @@ body {
     position: absolute;
     width: 340px;
     height: 340px;
-    background: url(8k_mars.jpg);
+    background: url("https://www.solarsystemscope.com/textures/download/2k_mars.jpg");
     border-radius: 50%;
     background-size: cover;
     box-shadow: inset 0 0 20px #ff5722,
@@ -144,13 +144,3 @@ body {
 
 }
 
-.navbar {
-    top: 0;
-    position: absolute;
-    ;
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-direction: column;
-}
