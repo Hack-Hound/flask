@@ -37,7 +37,7 @@ body
 .marsPlanet
 {
     position:relative;
-    min-width: 50%;
+    min-width: 100%;
     height:100px;
     justify-content: center;
     align-items: center;
@@ -110,18 +110,7 @@ body
     background: #ad2202;
     border-radius: 50%;
 }
-.mars
-{
-    position: absolute;
-    width: 340px;
-    height: 340px;
-    background: url({{url_for('static',filename='mars_favicon.jpg')}});
-    border-radius: 50%;
-    background-size: cover;
-    box-shadow: 0 0 20 px #f8b181,
-                0 0 120 px #f8b181;
-    animation: animateMars 20s linear infinite;
-}
+
 @keyframes animateMars
 {
     0%
@@ -134,3 +123,13 @@ body
     }
 }
   
+.navbar
+{
+    top: 0;
+    position: absolute;
+    width:100%;
+    display: flex;
+    justify-content:flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
