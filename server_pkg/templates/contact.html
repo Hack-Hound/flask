@@ -1,0 +1,70 @@
+{% extends 'basic.html' %}
+
+{% block aboutactive %} active {% endblock %}
+
+{% block title %} Planitia {% endblock %}
+
+{% block favicon %}favicon{% endblock %}
+
+
+{% block css %}
+<link rel="stylesheet" href="static/css/style.css">{% endblock %}
+
+
+{% block body %}
+
+<!-- Contact us section starts from here -->
+<div id="hero">
+    <div class="section">
+        <video autoplay loop muted plays-inline>
+            <source src="static/mars_video.mp4" class="back-video" type="video/mp4">
+        </video>
+        <div class="video-container">
+            <video autoplay loop muted plays-inline>
+                <source src="static/mars_video.mp4" class="back-video" type="video/mp4">
+            </video>
+        </div>
+        <div class="color-overlay"></div>
+    </div>
+    <section id="contact-section">
+        <div id="contact">
+            <div class="container">
+
+                <!-- Row div will be divided vertically in two columns -->
+                <div class="row">
+
+                    <!-- left part of contact -->
+                    <div class="contact-left">
+                        <h1 class="sub-title">Contact Us</h1>
+                        <!-- Social icons from fontawesome -->
+                        <div class="social-icons">
+                            <!-- LinkedIn -->
+                            <a href="#" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+
+                            <!-- Twitter -->
+                            <a href="#" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+
+                            <!-- Github -->
+                            <a href="#" target="_blank"><i class="fa-brands fa-github"></i></a>
+
+                            <!-- Instagram -->
+                            <a href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Right part of contact which will have form -->
+                    <div class="contact-right">
+                        <form action="https://formsubmit.co/sagarwadhwa888@gmail.com" method="POST">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                            <input type="email" name="email" placeholder="Your Email" required>
+                            <textarea name="message" rows="6" placeholder="Your Message"></textarea>
+                            <button type="submit" class="btn btn2">Submit</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

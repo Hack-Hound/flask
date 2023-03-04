@@ -24,49 +24,19 @@
     <link rel="stylesheet" type="text/css" href="planet.css">
     <link rel="stylesheet" href="{{url_for('static',filename='styles/bootstrap.min.css')}}">
     <link rel="icon" type="image/x-icon" href="{{url_for('static',filename='mars_favicon.png')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+Balinese:wght@500&family=Poppins:wght@600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/footer.css">
+    <script src="https://kit.fontawesome.com/d95b43cc6e.js" crossorigin="anonymous"></script>
     <title>{% block title %} {% endblock %}</title>
 
     <style>
-        footer {
-            position: static;
-            height: 8vh;
-            text-align: center;
-            bottom: 0;
-            right: 0;
-            left: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: auto;
-            background-color: #0c012e;
-            color: white;
-        }
-
-        body {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        body::-webkit-scrollbar {
-            width: 11px;
-        }
-
-        body::-webkit-scrollbar-track {
-            background: white;
-        }
-
-        body::-webkit-scrollbar-thumb {
-            background-color: gray;
-            border-radius: 10px;
-        }
-        .bg-danger{
-            background-color: #d32133 !important;
-        }
-
-            {% block css %}
-
-            {% endblock %}
+        {% block css %}
+        {% endblock %}
     </style>
     {% block head %} {% endblock %}
 
@@ -75,7 +45,7 @@
 <body>
     <!-- NAVBAR BEGIN HERE -->
     <nav class="font-weight-bold navbar navbar-expand-lg sticky-top navbar-light bg-danger">
-        <a class="navbar-brand" href="/shop">Planitia</a>
+        <a class="navbar-brand" href="/">Planitia</a>
 
         <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
             class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
@@ -85,7 +55,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link {% block homeactive %} {% endblock %}" href="/home">Home<span
+                    <a class="nav-link {% block homeactive %} {% endblock %}" href="/">Home<span
                             class="sr-only">(current)</span></a>
                 </li>
 
