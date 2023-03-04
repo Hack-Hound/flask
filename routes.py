@@ -15,7 +15,7 @@ from server_pkg.models import User
 from server_pkg.forms import login_form, register_form
 import os
 import imghdr
-import sql as SQL
+from sql import DB_Manager
 import server_pkg.essentials as ess
 # from flask_dropzone import Dropzone
 # from flask_uploads import UploadSet, configure_uploads, IMAGES, patch_request_class
@@ -39,7 +39,7 @@ def session_handler():
 
 @app.route("/", methods=("GET", "POST"), strict_slashes=False)
 def index():
-    return render_template("index.html")
+    return render_template("index.html",items=DB_Manager().QuarryAllItem())
 
 # user authentication
 
@@ -124,7 +124,7 @@ def logout():
 def admin_dashboard(check=None):
     print("init")
     if check:
-        
+
         return("ok")
     return("ok")
 

@@ -13,24 +13,24 @@ class DB_Manager:
         self.conn.execute('''CREATE TABLE ITEM
                 (ID         INTEGER     PRIMARY KEY     AUTOINCREMENT,
                 Name        TEXT        UNIQUE          NOT NULL,
-                Price       INTEGER     UNIQUE          NOT NULL,
+                Price       INTEGER     NOT NULL,
                 Description TEXT                        NOT NULL);''')
         print("ITEM Record table created successfully")
 
-        self.conn.execute('''CREATE TABLE ORDER
+        self.conn.execute('''CREATE TABLE ORDERS
                 (Order_ID       INTEGER     PRIMARY KEY     AUTOINCREMENT,
-                Item_ID         INTEGER                     NOT NULL,
-                User_ID         INTEGER                     NOT NULL,
-                Table_Number    INTEGER     UNIQUE          NOT NULL,
-                Order_Status    TEXT                        NOT NULL,
-                foreign key(Item_ID) references ITEM(ID));''')
-        print("ORDER Record table created successfully")
+                Item_ID         INTEGER     NOT NULL,
+                User_ID         INTEGER     NOT NULL,
+                Table_Number    INTEGER     UNIQUE      NOT NULL,
+                Order_Status    TEXT        NOT NULL);''')
+                
+        print("ORDERS Record table created successfully")
 
        
 
     # Query all
 
-    def QuarryItem(self):
+    def QuarryAllItem(self):
         SUB = self.SqlQuarryExec("""select ID,Name,Price,Description
                                 from ITEM;""")
         return ([[s[0] for s in SUB], [s[1] for s in SUB], [s[2] for s in SUB], [s[3] for s in SUB]])
@@ -47,13 +47,13 @@ class DB_Manager:
 
     def QuarryAllOrder(self):
         SUB = self.SqlQuarryExec("""select Order_ID,Item_ID,User_ID,Table_Number,Order_Status
-                                from ORDER
+                                from ORDERS
                                 order by ID asc;""")
         return ([[s[0] for s in SUB], [s[1] for s in SUB], [s[2] for s in SUB], [s[3] for s in SUB], [s[4] for s in SUB]])
 
     def QuarryOrderByUser_ID(self, ID):
         SUB = self.SqlQuarryExec("""select Order_ID,Item_ID,User_ID,Table_Number,Order_Status
-                                from ORDER
+                                from ORDERS
                                 where User_ID={0};""".format(ID))
         return ([[s[0] for s in SUB], [s[1] for s in SUB], [s[2] for s in SUB], [s[3] for s in SUB], [s[4] for s in SUB], ])
    
@@ -69,7 +69,7 @@ class DB_Manager:
 
     def AddOrder(self, Item_ID, User_ID, Table_Number, Order_Status):
         try:
-            self.conn.execute("INSERT INTO ORDER (Item_ID,User_ID,Table_Number,Order_Status) VALUES (\"{0}\",\"{1}\",\"{2}\",\"{3}\")".format(
+            self.conn.execute("INSERT INTO ORDERS (Item_ID,User_ID,Table_Number,Order_Status) VALUES (\"{0}\",\"{1}\",\"{2}\",\"{3}\")".format(
                 Item_ID,User_ID,Table_Number,Order_Status))
             self.Commit()
         except:
@@ -87,7 +87,7 @@ class DB_Manager:
     def RemoveOrderbyItem_ID(self, ID):
         try:
             self.conn.execute(
-                "DELETE from ORDER where Order_ID={0}".format(ID))
+                "DELETE from ORDERS where Order_ID={0}".format(ID))
             self.Commit()
         except:
             self.conn.rollback()
@@ -95,7 +95,7 @@ class DB_Manager:
     def RemoveOrderbyUser_ID(self, ID):
         try:
             self.conn.execute(
-                "DELETE from ORDER where User_ID={0}".format(ID))
+                "DELETE from ORDERS where User_ID={0}".format(ID))
             self.Commit()
         except:
             self.conn.rollback()        
@@ -113,3 +113,6 @@ class DB_Manager:
     #     stm = "DROP TABLE {0};".format(table)
     #     self.SqlQuarryExec(stm)
     #     self.Commit()
+
+if __name__=="__main__":
+    DB_Manager().TableCreation()

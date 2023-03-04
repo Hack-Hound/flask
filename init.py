@@ -2,6 +2,7 @@ from server_pkg.app import create_app,db
 from flask_migrate import upgrade,migrate,init,stamp
 from server_pkg.models import User
 from server_pkg.app import bcrypt
+from sql import DB_Manager
 import os
 
 def deploy():
@@ -35,3 +36,18 @@ def init_admin():
 	db.session.commit()
 
 init_admin()
+
+def init_db():
+	DB_Manager().TableCreation()
+	arr = [
+		["Item 1", 100, "Description 1"],
+		["Item 2", 100, "Description 1"],
+		["Item 3", 100, "Description 1"],
+		["Item 4", 100, "Description 1"],
+		["Item 5", 100, "Description 1"],
+		["Item 6", 100, "Description 1"]]
+	
+	for i in range(len(arr)):
+		DB_Manager().AddItem(arr[i][0],arr[i][1],arr[i][2])
+
+init_db()
