@@ -61,7 +61,7 @@ class DB_Manager:
 
     def AddItem(self, Name, Price, Description):
         try:
-            self.conn.execute("INSERT INTO ITEM (Name,Salt,Pass) VALUES (\"{0}\",\"{1}\",\"{2}\")".format(
+            self.conn.execute("INSERT INTO ITEM (Name, Price, Description) VALUES (\"{0}\",\"{1}\",\"{2}\")".format(
                 Name, Price, Description))
             self.Commit()
         except:
@@ -69,7 +69,7 @@ class DB_Manager:
 
     def AddOrder(self, Item_ID, User_ID, Table_Number, Order_Status):
         try:
-            self.conn.execute("INSERT INTO ORDER (Name,Description,Version,MainFile,Type) VALUES (\"{0}\",\"{1}\",\"{2}\",\"{3}\")".format(
+            self.conn.execute("INSERT INTO ORDER (Item_ID,User_ID,Table_Number,Order_Status) VALUES (\"{0}\",\"{1}\",\"{2}\",\"{3}\")".format(
                 Item_ID,User_ID,Table_Number,Order_Status))
             self.Commit()
         except:

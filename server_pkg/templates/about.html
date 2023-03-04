@@ -1,15 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'index.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Planitia - About Us</title>
-</head>
+{% block aboutactive %} active {% endblock %}
 
-<body>
+{% block title %} About Us {% endblock %}
 
-</body>
+{% block favicon %}favicon{% endblock %}
 
-</html>
+
+{% block body %}
+
+<div class="jumbotron">
+    <div class="container">
+        <h1>Planitia</h1>
+        <p class="center" style="text-align: left;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi,
+            adipisci cupiditate cum laboriosam perferendis consequuntur libero reprehenderit praesentium obcaecati alias
+            id numquam. Quo, possimus eum fugiat veritatis corrupti minus. Harum nesciunt delectus quis amet error
+            aperiam ut ducimus praesentium facilis sunt natus accusantium veritatis illo omnis, perferendis ab animi
+            adipisci! Architecto vel laborum illum aut, rem animi error. Nesciunt velit quod recusandae a dolore nam
+            minima iusto, corporis odio rerum neque, quos soluta maxime sit dignissimos? Tenetur iste similique ratione
+            eos dolorum, accusamus officia sint pariatur cumque assumenda laudantium! Recusandae, quo porro? Modi natus
+            sunt ex incidunt voluptas praesentium reiciendis.
+        </p>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- Example row of columns -->
+    <div class="row">
+        <div class="col-md-4 mb-5">
+            <img src="/media/shop/images/goal.png" class="mb-3" style="width:50px">
+            <h2>Goals</h2>
+            <p class="center">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi, adipisci cupiditate cum
+                laboriosam perferendis consequuntur libero reprehenderit praesentium obcaecati alias id numquam. Quo,
+                possimus eum fugiat veritatis corrupti minus. Harum nesciunt delectus quis amet error aperiam ut ducimus
+                praesentium facilis sunt natus accusantium veritatis illo omnis, perferendis ab animi adipisci!
+                Architecto vel laborum illum aut, rem animi error. Nesciunt velit quod recusandae a dolore nam minima
+                iusto, corporis odio rerum neque, quos soluta maxime sit dignissimos? Tenetur iste similique ratione eos
+                dolorum, accusamus officia sint pariatur cumque assumenda laudantium! Recusandae, quo porro? Modi natus
+                sunt ex incidunt voluptas praesentium reiciendis.
+            </p>
+        </div>
+
+        <div class="col-md-4 mb-5">
+            <img src="/media/shop/images/futureplan.png" class="mb-3" style="width:50px">
+            <h2>Future Plans</h2>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi, adipisci cupiditate cum laboriosam
+                perferendis consequuntur libero reprehenderit praesentium obcaecati alias id numquam. Quo, possimus eum
+                fugiat veritatis corrupti minus. Harum nesciunt delectus quis amet error aperiam ut ducimus praesentium
+                facilis sunt natus accusantium veritatis illo omnis, perferendis ab animi adipisci! Architecto vel
+                laborum illum aut, rem animi error. Nesciunt velit quod recusandae a dolore nam minima iusto, corporis
+                odio rerum neque, quos soluta maxime sit dignissimos? Tenetur iste similique ratione eos dolorum,
+                accusamus officia sint pariatur cumque assumenda laudantium! Recusandae, quo porro? Modi natus sunt ex
+                incidunt voluptas praesentium reiciendis.</p>
+        </div>
+
+        <div class="col-md-4 mb-5">
+            <img src="/media/shop/images/bio.png" class="mb-3" style="width:50px">
+            <h2>Carbon Neutral</h2>
+            <p class="center">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi, adipisci cupiditate cum
+                laboriosam perferendis consequuntur libero reprehenderit praesentium obcaecati alias id numquam. Quo,
+                possimus eum fugiat veritatis corrupti minus. Harum nesciunt delectus quis amet error aperiam ut ducimus
+                praesentium facilis sunt natus accusantium veritatis illo omnis, perferendis ab animi adipisci!
+                Architecto vel laborum illum aut, rem animi error. Nesciunt velit quod recusandae a dolore nam minima
+                iusto, corporis odio rerum neque, quos soluta maxime sit dignissimos? Tenetur iste similique ratione eos
+                dolorum, accusamus officia sint pariatur cumque assumenda laudantium! Recusandae, quo porro? Modi natus
+                sunt ex incidunt voluptas praesentium reiciendis. </p>
+        </div>
+    </div>
+    <hr>
+</div> <!-- /container -->
+
+{% endblock %}
