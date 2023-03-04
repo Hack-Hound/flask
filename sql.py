@@ -10,72 +10,25 @@ class DB_Manager:
 
     # record table creation
     def TableCreation(self):
-        self.conn.execute('''CREATE TABLE CRED
+        self.conn.execute('''CREATE TABLE ITEM
                 (ID         INTEGER     PRIMARY KEY     AUTOINCREMENT,
                 Name        TEXT        UNIQUE          NOT NULL,
-                Salt        TEXT        UNIQUE          NOT NULL,
-                Pass        TEXT        UNIQUE          NOT NULL);''')
-        print("CRED Record table created successfully")
+                Price       INTEGER     UNIQUE          NOT NULL,
+                Description TEXT                        NOT NULL);''')
+        print("ITEM Record table created successfully")
 
-        self.conn.execute('''CREATE TABLE PLUGIN
-                (ID         INTEGER     PRIMARY KEY    AUTOINCREMENT,
-                Name        TEXT        UNIQUE          NOT NULL,
-                Description TEXT        UNIQUE          NOT NULL,
-                Version     TEXT        UNIQUE          NOT NULL,
-                MainFile    TEXT        UNIQUE          NOT NULL,
-                Type        INTEGER     NOT NULL);''')
-        print("PLUGIN Record table created successfully")
+        self.conn.execute('''CREATE TABLE ORDER
+                (Order_ID       INTEGER     PRIMARY KEY     AUTOINCREMENT,
+                Item_ID         INTEGER                     NOT NULL,
+                User_ID         INTEGER                     NOT NULL,
+                Table_Number    INTEGER     UNIQUE          NOT NULL,
+                Order_Status    TEXT                        NOT NULL,
+                foreign key(Item_ID) references ITEM(ID));''')
+        print("ORDER Record table created successfully")
 
-        self.conn.execute('''CREATE TABLE ROUTS
-                (ID         INTEGER     PRIMARY KEY     AUTOINCREMENT,     
-                ID_Plugin   INTEGER     NOT NULL,
-                URI         TEXT        UNIQUE          NOT NULL,
-                Type        INTEGER     NOT NULL);''')
-        print("ROUTS table created successfully")
+       
 
-        self.conn.execute('''CREATE TABLE SH_FILES
-                (ID         INTEGER     PRIMARY KEY     AUTOINCREMENT,     
-                URI_Name    TEXT        UNIQUE          NOT NULL,
-                URI_File    TEXT        UNIQUE          NOT NULL,
-                UAID        INTEGER     NOT NULL);''')
-        print("SH_FILES table created successfully")
-
-        self.conn.execute('''CREATE TABLE TOKEN
-                (Hash       TEXT        PRIMARY KEY,     
-                Name        TEXT        UNIQUE          NOT NULL,
-                CreatTime   INTEGER     NOT NULL,
-                EndTime     INTEGER     NOT NULL,
-                Description TEXT        NOT NULL,
-                AccessCode  TEXT        NOT NULL,
-                PluginID    INTEGER     NOT NULL,
-                UAID        INTEGER     NOT NULL);''')
-        print("TOKEN table created successfully")
-
-        self.conn.execute('''CREATE TABLE HOOK
-                (SID        INTEGER     NOT NULL,
-                Hook        TEXT        NOT NULL,
-                DID         INTEGER     NOT NULL,
-                Status      INTEGER     NOT NULL,
-                UAID        INTEGER     NOT NULL,
-                foreign key(SID) references PLUGIN(ID),
-                foreign key(DID) references PLUGIN(ID));''')
-        print("HOOK table created successfully")
-
-        self.conn.execute('''CREATE TABLE LOG
-                (PluginID   INTEGER     NOT NULL,
-                Log         TEXT        NOT NULL,
-                TimeStamp   INTEGER     NOT NULL,
-                priority    INTEGER     NOT NULL,
-                UAID        INTEGER     NOT NULL);''')
-        print("LOG table created successfully")
-
-        self.conn.execute('''CREATE TABLE ACCESS
-                (UID        INTEGER     NOT NULL,
-                PID         INTEGER     NOT NULL,
-                foreign key(PID) references PLUGIN(ID));''')
-        print("ACCESS table created successfully")
-
-    # Quarry all
+    # Query all
 
     def QuarryCred(self):
         SUB = self.SqlQuarryExec("""select ID,Name,Salt,Pass
