@@ -127,10 +127,6 @@ def about():
     pass
     return("ok")
 
-@app.route("/checkout",methods=("GET","POST"),strict_slashes=False)
-def about():
-    pass
-    return("ok")
 
 
 if __name__ == "__main__":
