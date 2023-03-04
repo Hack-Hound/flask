@@ -27,7 +27,6 @@ def load_user(user_id):
 app = create_app()
 
 
-
 @app.before_request
 def session_handler():
     session.permanent = True
@@ -117,18 +116,21 @@ def logout():
     logout_user()
     return redirect(url_for('login'))
 
-@app.route("/cart",methods=["GET"], strict_slashes=False)
+
+@app.route("/cart", methods=["GET"], strict_slashes=False)
 def cart():
     pass
     return("ok")
 
-@app.route("/about",methods=["GET"],strict_slashes=False)
+
+@app.route("/about", methods=["GET"], strict_slashes=False)
 def about():
     pass
     return("ok")
 
-@app.route("/checkout",methods=("GET","POST"),strict_slashes=False)
-def about():
+
+@app.route("/checkout", methods=("GET", "POST"), strict_slashes=False)
+def checkout():
     pass
     return("ok")
 
