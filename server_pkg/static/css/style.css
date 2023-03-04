@@ -1,0 +1,184 @@
+/* IMPORTS FOR FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Balinese:wght@500&family=Poppins:wght@600&display=swap');
+
+/* CSS RESET */
+* {
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+}
+
+.section {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+    overflow: hidden;
+}
+
+.video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.color-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black;
+    width: 100%;
+    height: 100vh;
+    opacity: 0.7;
+}
+
+
+/* ***************************************** CONTACT-US SECTION STARTS FROM HERE &**************************** */
+#contact {
+    margin: 10px 0px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    padding: 40px;
+    border-radius: 20px;
+    transform: translate(-50%, -50%);
+}
+
+.contact-left {
+    flex-basis: 35%;
+}
+
+.contact-right {
+    flex-basis: 60%;
+
+}
+
+.sub-title {
+    color: #ababab;
+}
+
+.contact-right form {
+    width: 100%;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: #262626;
+    padding: 15px;
+    margin: 15px 0px;
+    color: #fff;
+    border-radius: 6px;
+    resize: none;
+}
+
+form input:hover,
+form textarea:hover {
+    border: 1px solid #ff004f;
+}
+
+.contact-left p {
+    margin-top: 30px;
+}
+
+.contact-left p i {
+    color: #ff004f;
+    margin-right: 15px;
+    font-style: 25px;
+}
+
+.social-icons {
+    margin-top: 30px;
+}
+
+.social-icons a {
+    text-decoration: none;
+    color: #ababab;
+    font-size: 30px;
+    margin-right: 15px;
+    display: inline-block;
+}
+
+form .btn2 {
+    padding: 14px 60px;
+    font-size: 18px;
+    margin-top: 20px;
+    cursor: pointer;
+    background: rgb(150, 40, 40);
+}
+
+.social-icons a:hover {
+    color: #ff004f;
+    transform: translateY(-5px);
+}
+
+
+
+/* ***************************************** SCROLL-BAR CUSTOMISATION *******************************/
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #080808;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #ff004f;
+    border-radius: 3px;
+
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #950331;
+}
+
+/* For fixed navbar */
+nav,
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 12;
+}
+
+/* CSS FOR VIDEO*/
+.hero {
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba);
+}
+
+.back-video {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+@media (min-aspect-ration: 16/9) {
+    .back-video {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-aspect-ration: 16/9) {
+    .back-video {
+        width: auto;
+        height: 100%;
+    }
+}
