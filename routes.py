@@ -1,36 +1,40 @@
+import string
+import random
+from twilio.rest import Client
+import server_pkg.essentials as ess
+from sql import DB_Manager
+import imghdr
+import os
+from server_pkg.forms import login_form, register_form
+from server_pkg.models import User
+from server_pkg.app import create_app, db, login_manager, bcrypt
+from flask_login import login_user, logout_user, login_required
+from flask_bcrypt import check_password_hash
+from werkzeug.utils import secure_filename
+from werkzeug.routing import BuildError
+from sqlalchemy.exc import IntegrityError, DataError, DatabaseError, InterfaceError, InvalidRequestError
+import flask_login
+from datetime import timedelta
+from flask import render_template, redirect, flash, url_for, session, request, send_from_directory
+import time
+import json
+from importlib.resources import path
+from dataclasses import dataclass
 import cv2
+vid = cv2.VideoCapture(0)
+detector = cv2.QRCodeDetector()
 # todo db mo=igration
 # todo add twilio
 # todo cohere
 # todo add feedback table
 
-from dataclasses import dataclass
-from importlib.resources import path
-from twilio.rest import Client 
-import random, string
-import json
-import time
-from flask import render_template, redirect, flash, url_for, session, request, send_from_directory
-from datetime import timedelta
-import flask_login
-from sqlalchemy.exc import IntegrityError, DataError, DatabaseError, InterfaceError, InvalidRequestError
-from werkzeug.routing import BuildError
-from werkzeug.utils import secure_filename
-from flask_bcrypt import check_password_hash
-from flask_login import login_user, logout_user, login_required
-from server_pkg.app import create_app, db, login_manager, bcrypt
-from server_pkg.models import User
-from server_pkg.forms import login_form, register_form
-import os
-import imghdr
-from sql import DB_Manager
-import server_pkg.essentials as ess
 # from flask_dropzone import Dropzone
 # from flask_uploads import UploadSet, configure_uploads, IMAGES, patch_request_class
 
-account_sid = 'AC2396a508b3704642de6e6f0d20346096' 
-auth_token = 'b79f835fb0d0600e0c71248b77186502' 
-client = Client(account_sid, auth_token) 
+account_sid = 'AC2396a508b3704642de6e6f0d20346096'
+auth_token = 'b79f835fb0d0600e0c71248b77186502'
+client = Client(account_sid, auth_token)
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -81,7 +85,8 @@ def login():
             pwd = registerform.pwd.data
             username = registerform.username.data
             phone = registerform.phone.data
-            x=''.join(random.choices(string.ascii_letters + string.digits, k=5))
+            x = ''.join(random.choices(
+                string.ascii_letters + string.digits, k=5))
             print(x)
             newuser = User(
                 username=username,
@@ -113,7 +118,6 @@ def login():
                            )
 
 
-
 @app.route("/logout")
 @login_required
 def logout():
@@ -132,11 +136,30 @@ def contact():
     return render_template("contact.html")
 
 
-
-
 @app.route("/qrcode", methods=["GET"], strict_slashes=False)
 def qrcode():
     return render_template("qrcode.html")
+
+
+@app.route("/readQr/")
+def readQr():
+    while True:
+        # Capture the video frame by frame
+        ret, frame = vid.read()
+        data, bbox, straight_qrcode = detector.detectAndDecode(frame)
+        if len(data) > 0:
+            print(data)
+        # Display the resulting frame
+        cv2.imshow('frame', frame)
+        # the 'q' button is set as the
+        # quitting button you may use any
+        # desired button of your choice
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+    # After the loop release the cap object
+    vid.release()
+    # Destroy all the windows
+    cv2.destroyAllWindows()
 
 
 @app.route("/cart", methods=["GET"], strict_slashes=False)
@@ -167,6 +190,7 @@ def checkout():
     pass
     return render_template('checkout.html')
 
+
 @app.route("/food_menu", methods=("GET", "POST"), strict_slashes=False)
 def food_menu():
     if request.method == "POST":
@@ -183,6 +207,7 @@ def food_menu():
 
         return("response submitted")
     return render_template('food_menu.html', items=DB_Manager().QuarryAllItem())
+
 
 if __name__ == "__main__":
     app.run(debug=True)

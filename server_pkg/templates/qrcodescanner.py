@@ -1,8 +1,11 @@
-# import the opencv library
+#import libraries
 import cv2
+from pyzbar import pyzbar
 # define a video capture object
 vid = cv2.VideoCapture(0)
 detector = cv2.QRCodeDetector()
+
+
 def readQr():
     while True:
         # Capture the video frame by frame
@@ -17,7 +20,10 @@ def readQr():
         # desired button of your choice
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
+    vid.release()
+    # Destroy all the windows
+    cv2.destroyAllWindows()
+
+
+readQr()
 # After the loop release the cap object
-vid.release()
-# Destroy all the windows
-cv2.destroyAllWindows()
