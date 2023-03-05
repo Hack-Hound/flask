@@ -1,3 +1,8 @@
+#todo db mo=igration
+#todo add twilio
+#todo cohere
+#todo add feedback table
+
 from dataclasses import dataclass
 from importlib.resources import path
 import json
@@ -39,7 +44,12 @@ def session_handler():
 
 @app.route("/", methods=("GET", "POST"), strict_slashes=False)
 def index():
-    return render_template("index.html", items=DB_Manager().QuarryAllItem())
+    return render_template("index.html")
+
+
+@app.route("/drowner", methods=("GET", "POST"), strict_slashes=False)
+def drowner():
+    return render_template("drowner.html", items=DB_Manager().QuarryAllItem())
 
 # user authentication
 
@@ -112,15 +122,6 @@ def logout():
     return redirect(url_for('login'))
 
 
-@app.route("/admin/<int:check>")
-@app.route("/admin")
-# @ess.admin_required
-def admin_dashboard(check=None):
-    print("init")
-    if check:
-
-        return("ok")
-    return("ok")
 
 
 @app.route("/contact", methods=("GET","POST"), strict_slashes=False)
@@ -128,6 +129,8 @@ def contact():
     if request.method == "POST":
         vars = request.form
         print(vars)
+        # todo save response
+
         return("response submitted")
     return render_template("contact.html")
 
