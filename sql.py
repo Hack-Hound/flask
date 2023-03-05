@@ -18,6 +18,7 @@ class DB_Manager:
                 Price       INTEGER     NOT NULL,
                 Description TEXT                        NOT NULL);''')
         print("ITEM Record table created successfully")
+        self.close_conn()
 
         self.conn.cursor().execute('''CREATE TABLE ORDERS
                 (Order_ID       INTEGER     NOT NULL,
@@ -28,6 +29,7 @@ class DB_Manager:
                 Number          INTEGER     NOT NULL);''')
                 
         print("ORDERS Record table created successfully")
+        self.close_conn()
 
        
 
@@ -36,6 +38,7 @@ class DB_Manager:
     def QuarryAllItem(self):
         SUB = self.SqlQuarryExec("""select ID,Name,Price,Description
                                 from ITEM;""")
+        self.close_conn()
         return ([[s[0] for s in SUB], [s[1] for s in SUB], [s[2] for s in SUB], [s[3] for s in SUB]])
 
     def QuarryItemPrice(self):
@@ -46,18 +49,21 @@ class DB_Manager:
     def QuarryItemDescriptiom(self):
         SUB = self.SqlQuarryExec("""select Description
                                 from ITEM;""")
+        self.close_conn()
         return ([s[0] for s in SUB])
 
     def QuarryAllOrder(self):
         SUB = self.SqlQuarryExec("""select Order_ID,Item_ID,User_ID,Table_Number,Order_Status,Number
                                 from ORDERS
                                 order by ID asc;""")
+        self.close_conn()
         return ([[s[0] for s in SUB], [s[1] for s in SUB], [s[2] for s in SUB], [s[3] for s in SUB], [s[4] for s in SUB], [s[5] for s in SUB]])
 
     def QuarryOrderByUser_ID(self, ID):
         SUB = self.SqlQuarryExec("""select Order_ID,Item_ID,User_ID,Table_Number,Order_Status,Number
                                 from ORDERS
                                 where User_ID={0};""".format(ID))
+        self.close_conn()
         return ([[s[0] for s in SUB], [s[1] for s in SUB], [s[2] for s in SUB], [s[3] for s in SUB], [s[4] for s in SUB], [s[5] for s in SUB]])
    
  # adding to Record table
@@ -69,6 +75,7 @@ class DB_Manager:
             self.Commit()
         except:
             self.conn.rollback()
+        self.close_conn()    
 
     def AddOrder(self, Order_ID, Item_ID, User_ID, Table_Number, Order_Status,number):
         try:
@@ -77,6 +84,7 @@ class DB_Manager:
             self.Commit()
         except:
             self.conn.rollback()
+        self.close_conn()    
 
     # removing from table
 
@@ -86,6 +94,7 @@ class DB_Manager:
             self.Commit()
         except:
             self.conn.rollback()
+        self.close_conn()    
 
     def RemoveOrderbyItem_ID(self, ID):
         try:
@@ -94,6 +103,7 @@ class DB_Manager:
             self.Commit()
         except:
             self.conn.rollback()
+        self.close_conn()    
 
     def RemoveOrderbyUser_ID(self, ID):
         try:
@@ -101,7 +111,8 @@ class DB_Manager:
                 "DELETE from ORDERS where User_ID={0}".format(ID))
             self.Commit()
         except:
-            self.conn.rollback()     
+            self.conn.rollback()   
+        self.close_conn()      
 
     def updateOrderNumber(self, Order_ID, number, Item_ID):
         try:
@@ -110,15 +121,21 @@ class DB_Manager:
             self.Commit()
         except:
             self.conn.rollback()
+        self.close_conn()    
     # Misc
 
     def SqlQuarryExec(self, quarry):
         c = self.conn.cursor()
         c.execute(quarry)
+        self.close_conn()
         return (c.fetchall())
 
     def Commit(self):
         self.conn.commit()
+        self.close_conn()
+
+    def close_conn(self):
+        self.conn.close()
 
     # def DropTable(self, table):
     #     stm = "DROP TABLE {0};".format(table)
