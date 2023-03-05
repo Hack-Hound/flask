@@ -24,11 +24,13 @@ deploy()
 def init_admin():
 	email = input("Enter email for admin\t: ")
 	pwd = input("Enter password for admin\t: ")
+	phone = "9899011495"
 	username = "admin"
 
 	Admin = User(
 		username=username,
 		email=email,
+		phone=phone,
 		pwd=bcrypt.generate_password_hash(pwd)
 	)
 
