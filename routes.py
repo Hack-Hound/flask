@@ -1,3 +1,4 @@
+import cv2
 from dataclasses import dataclass
 from importlib.resources import path
 import json
@@ -103,8 +104,6 @@ def login():
                            )
 
 
-
-
 @app.route("/logout")
 @login_required
 def logout():
@@ -123,7 +122,7 @@ def admin_dashboard(check=None):
     return("ok")
 
 
-@app.route("/contact", methods=("GET","POST"), strict_slashes=False)
+@app.route("/contact", methods=("GET", "POST"), strict_slashes=False)
 def contact():
     if request.method == "POST":
         vars = request.form
@@ -132,9 +131,9 @@ def contact():
     return render_template("contact.html")
 
 
-@app.route("/qrcodegen", methods=["GET"], strict_slashes=False)
-def qrcodegen():
-    return render_template("qrcodegen.html")
+@app.route("/qrcode", methods=["GET"], strict_slashes=False)
+def qrcode():
+    return render_template("qrcode.html")
 
 
 @app.route("/cart", methods=["GET"], strict_slashes=False)

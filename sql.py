@@ -24,10 +24,8 @@ class DB_Manager:
                 Table_Number    INTEGER     UNIQUE      NOT NULL,
                 Order_Status    INTEGER     NOT NULL,
                 Number          INTEGER     NOT NULL);''')
-                
-        print("ORDERS Record table created successfully")
 
-       
+        print("ORDERS Record table created successfully")
 
     # Query all
 
@@ -57,7 +55,7 @@ class DB_Manager:
                                 from ORDERS
                                 where User_ID={0};""".format(ID))
         return ([[s[0] for s in SUB], [s[1] for s in SUB], [s[2] for s in SUB], [s[3] for s in SUB], [s[4] for s in SUB], [s[5] for s in SUB]])
-   
+
  # adding to Record table
 
     def AddItem(self, Name, Price, Description):
@@ -68,10 +66,10 @@ class DB_Manager:
         except:
             self.conn.rollback()
 
-    def AddOrder(self, Order_ID, Item_ID, User_ID, Table_Number, Order_Status,number):
+    def AddOrder(self, Order_ID, Item_ID, User_ID, Table_Number, Order_Status, number):
         try:
             self.conn.execute("INSERT INTO ORDERS (Order_ID,Item_ID,User_ID,Table_Number,Order_Status,Number) VALUES ({0}, {1},{2},{3},{4},{5})".format(
-                Order_ID,Item_ID,User_ID,Table_Number,Order_Status,number))
+                Order_ID, Item_ID, User_ID, Table_Number, Order_Status, number))
             self.Commit()
         except:
             self.conn.rollback()
@@ -80,7 +78,8 @@ class DB_Manager:
 
     def RemoveItembyItem_ID(self, Item_ID):
         try:
-            self.conn.execute("DELETE from ITEM where Item_ID={0}".format(Item_ID))
+            self.conn.execute(
+                "DELETE from ITEM where Item_ID={0}".format(Item_ID))
             self.Commit()
         except:
             self.conn.rollback()
@@ -99,7 +98,7 @@ class DB_Manager:
                 "DELETE from ORDERS where User_ID={0}".format(ID))
             self.Commit()
         except:
-            self.conn.rollback()     
+            self.conn.rollback()
 
     def updateOrderNumber(self, Order_ID, number, Item_ID):
         try:
@@ -123,5 +122,6 @@ class DB_Manager:
     #     self.SqlQuarryExec(stm)
     #     self.Commit()
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     DB_Manager().TableCreation()
