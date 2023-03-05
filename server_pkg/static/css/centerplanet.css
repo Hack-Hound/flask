@@ -1,4 +1,5 @@
-* {
+*
+{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -25,19 +26,19 @@ body {
     margin-bottom: 40px;
     font-weight: 600;
 }
-
-.planet .container {
-    width: 100%;
+.planet .container
+{
+    width:100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
-
-.marsPlanet {
+.marsPlanet
+{
     position: relative;
-    min-width: 100%;
-    height: 100vh;
+    min-width: 50%;
+    height:100vh;
     justify-content: center;
     align-items: center;
     background: #190703;
@@ -69,7 +70,7 @@ body {
     width: 50%;
     height: 100%;
     /*change color here*/
-    background: linear-gradient(to top, transparent, rgba(255, 157, 65, 0.8));
+    background: linear-gradient(to top, transparent,rgba(255, 157, 65, 0.8));
     background-size: 200px 360px;
     background-repeat: no-repeat;
     border-top-left-radius: 200px;
@@ -143,4 +144,3 @@ body {
     }
 
 }
-
