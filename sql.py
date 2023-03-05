@@ -13,7 +13,7 @@ class DB_Manager:
     # record table creation
     def TableCreation(self):
         self.conn.cursor().execute('''CREATE TABLE ITEM
-                (ID         INTEGER     PRIMARY KEY     AUTOINCREMENT,
+                (ID         INTEGER     PRIMARY KEY     SERIAL,
                 Name        TEXT        UNIQUE          NOT NULL,
                 Price       INTEGER     NOT NULL,
                 Description TEXT                        NOT NULL);''')
