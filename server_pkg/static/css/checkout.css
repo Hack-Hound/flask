@@ -1,0 +1,164 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Oswald', sans-serif;
+}
+body
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background:#434750;
+}
+
+ul{
+    position: relative;
+    transform: skewY(-15deg);
+}
+ul2{
+    position: relative;
+    transform: skewY(-15deg);
+}
+ul li
+{
+    position: relative;
+    list-style: none;
+    width: 200px;
+    background: #3e3f46;
+    padding: 15px;
+    z-index: var(--i);
+    transition: 0.5s;
+}
+ul2 li
+{
+    position: absolute;
+    list-style: none;
+    top: -400px;
+    width: 110px;
+    left: -600px;
+    background: #3e3f46;
+    padding: 15px;
+    z-index: var(--i);
+    transition: 0.5s;
+}
+ul2 li:hover
+{
+    background: #ff5722;
+    transform:translateX(-50px);
+
+}
+ul li:hover
+{
+    background: #ff5722;
+    transform:translateX(50px);
+
+}
+ul li::before
+{
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 40px;
+    left: -40px;
+    height: 100%;
+    background:#2e3133;
+    transform-origin: right;
+    transform: skewY(45deg);
+    transition: 0.5s;
+}
+ul2 li::before
+{
+    content: '';
+    position: absolute;
+    top: 0px;
+    width: 40px;
+    left: -40px;
+    height: 100%;
+    background:#2e3133;
+    transform-origin: right;
+    transform: skewY(45deg);
+    transition: 0.5s;
+}
+ul li:hover::before
+{
+    background: #923013;
+}
+ul2 li:hover::before
+{
+    background: #923013;
+}
+ul li::after
+{
+    content: '';
+    position: absolute;
+    top: -40px;
+    width: 100%;
+    left: 0;
+    height: 40px;
+    background:#a7daff;
+    transform-origin: bottom;
+    transform: skewX(45deg);
+    transition: 0.5s;
+}
+ul2 li::after
+{
+    content: '';
+    position: absolute;
+    top: -40px;
+    width: 100%;
+    left: 0;
+    height: 40px;
+    background:#a7daff;
+    transform-origin: bottom;
+    transform: skewX(45deg);
+    transition: 0.5s;
+}
+ul li:hover::after
+{
+    background: #a7daff;
+}
+ul2 li:hover::after
+{
+    background: #a7daff;
+}
+ul li a
+{
+    text-decoration: none;
+    color:#999;
+    display:block;
+    text-transform: uppercase;
+    letter-spacing:0.05em;
+    transition:0.5s;
+}
+ul2 li a
+{
+    text-decoration: none;
+    color:#999;
+    display:block;
+    text-transform: uppercase;
+    letter-spacing:0.05em;
+    transition:0.5s;
+}
+ul li:hover a
+{
+ color: #fff;
+
+}
+ul2 li:hover a
+{
+color: #fff;
+
+}
+ul li:last-child::after
+{
+    box-shadow: -120px 120px 20px rgba(0,0,0,0.25);
+
+}
+ul2 li:last-child::after
+{
+    box-shadow: -120px 120px 20px rgba(0,0,0,0.25);
+
+}
