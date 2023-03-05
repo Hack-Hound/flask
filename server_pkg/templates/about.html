@@ -1,74 +1,141 @@
-{% extends 'index.html' %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block aboutactive %} active {% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <title>Planitia | Eat-in | Take Away</title>
+    <link rel="stylesheet" type="text/css" href="planet.css">
+    <link rel="stylesheet" href="{{url_for('static',filename='styles/bootstrap.min.css')}}">
+    <link rel="icon" type="image/x-icon" href="{{url_for('static',filename='mars_favicon.png')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+Balinese:wght@500&family=Poppins:wght@600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/footer.css">
+    <script src="https://kit.fontawesome.com/d95b43cc6e.js" crossorigin="anonymous"></script>
+    <title>Planitia</title>
 
-{% block title %} About Us {% endblock %}
+</head>
 
-{% block favicon %}favicon{% endblock %}
+<body>
+    <!-- NAVBAR BEGIN HERE -->
+    <nav class="font-weight-bold navbar navbar-expand-lg sticky-top navbar-light bg-danger">
+        <a class="navbar-brand" href="/">Planitia</a>
 
+        <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+            class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-{% block body %}
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home<span
+                            class="sr-only">(current)</span></a>
+                </li>
 
-<div class="jumbotron">
-    <div class="container">
-        <h1>Planitia</h1>
-        <p class="center" style="text-align: left;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi,
-            adipisci cupiditate cum laboriosam perferendis consequuntur libero reprehenderit praesentium obcaecati alias
-            id numquam. Quo, possimus eum fugiat veritatis corrupti minus. Harum nesciunt delectus quis amet error
-            aperiam ut ducimus praesentium facilis sunt natus accusantium veritatis illo omnis, perferendis ab animi
-            adipisci! Architecto vel laborum illum aut, rem animi error. Nesciunt velit quod recusandae a dolore nam
-            minima iusto, corporis odio rerum neque, quos soluta maxime sit dignissimos? Tenetur iste similique ratione
-            eos dolorum, accusamus officia sint pariatur cumque assumenda laudantium! Recusandae, quo porro? Modi natus
-            sunt ex incidunt voluptas praesentium reiciendis.
-        </p>
-    </div>
-</div>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/about">About Us</a>
+                </li>
 
-<div class="container">
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact">Contact Us</a>
+                </li>
+            </ul>
 
-    <!-- Example row of columns -->
-    <div class="row">
-        <div class="col-md-4 mb-5">
-            <img src="/media/shop/images/goal.png" class="mb-3" style="width:50px">
-            <h2>Goals</h2>
-            <p class="center">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi, adipisci cupiditate cum
-                laboriosam perferendis consequuntur libero reprehenderit praesentium obcaecati alias id numquam. Quo,
-                possimus eum fugiat veritatis corrupti minus. Harum nesciunt delectus quis amet error aperiam ut ducimus
-                praesentium facilis sunt natus accusantium veritatis illo omnis, perferendis ab animi adipisci!
-                Architecto vel laborum illum aut, rem animi error. Nesciunt velit quod recusandae a dolore nam minima
-                iusto, corporis odio rerum neque, quos soluta maxime sit dignissimos? Tenetur iste similique ratione eos
-                dolorum, accusamus officia sint pariatur cumque assumenda laudantium! Recusandae, quo porro? Modi natus
-                sunt ex incidunt voluptas praesentium reiciendis.
+            <button class="btn btn-info mx-2" data-toggle="popover" data-container="body" data-html="true"
+                data-placement="bottom" data-animation="true" onclick="clickHandler()" id="popcart" type="button">
+                Cart(<span id="cart">0</span>)
+                <img src="{{url_for('static',filename='cart.png')}}" id="svg_cart" width="20px">
+            </button>
+
+            {% if current_user.is_authenticated %}
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Welcome {{current_user.username}}
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="/logout">Logout</a>
+                </div>
+              </div>
+            {% else %}
+            <a class="btn btn-primary ml-3" id="signinbtn" href="/login">Sign In</a>
+
+            <a class="btn btn-primary ml-3" id="signupbtn" href="/register">Sign Up</a>
+            {% endif %}
+        </div>
+    </nav>
+    <!-- NAVBAR ENDS HERE -->
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Planitia</h1>
+            <p class="center" style="text-align: left;">Welcome to our Martian restaurant! Our mission is to provide a unique and delicious dining experience that transports our customers to a different world. As the head of the team tasked with designing this restaurant, we are committed to creating a sustainable and self-sufficient colony on Mars, just like Elon Musk's vision.
             </p>
         </div>
-
-        <div class="col-md-4 mb-5">
-            <img src="/media/shop/images/futureplan.png" class="mb-3" style="width:50px">
-            <h2>Future Plans</h2>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi, adipisci cupiditate cum laboriosam
-                perferendis consequuntur libero reprehenderit praesentium obcaecati alias id numquam. Quo, possimus eum
-                fugiat veritatis corrupti minus. Harum nesciunt delectus quis amet error aperiam ut ducimus praesentium
-                facilis sunt natus accusantium veritatis illo omnis, perferendis ab animi adipisci! Architecto vel
-                laborum illum aut, rem animi error. Nesciunt velit quod recusandae a dolore nam minima iusto, corporis
-                odio rerum neque, quos soluta maxime sit dignissimos? Tenetur iste similique ratione eos dolorum,
-                accusamus officia sint pariatur cumque assumenda laudantium! Recusandae, quo porro? Modi natus sunt ex
-                incidunt voluptas praesentium reiciendis.</p>
-        </div>
-
-        <div class="col-md-4 mb-5">
-            <img src="/media/shop/images/bio.png" class="mb-3" style="width:50px">
-            <h2>Carbon Neutral</h2>
-            <p class="center">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi, adipisci cupiditate cum
-                laboriosam perferendis consequuntur libero reprehenderit praesentium obcaecati alias id numquam. Quo,
-                possimus eum fugiat veritatis corrupti minus. Harum nesciunt delectus quis amet error aperiam ut ducimus
-                praesentium facilis sunt natus accusantium veritatis illo omnis, perferendis ab animi adipisci!
-                Architecto vel laborum illum aut, rem animi error. Nesciunt velit quod recusandae a dolore nam minima
-                iusto, corporis odio rerum neque, quos soluta maxime sit dignissimos? Tenetur iste similique ratione eos
-                dolorum, accusamus officia sint pariatur cumque assumenda laudantium! Recusandae, quo porro? Modi natus
-                sunt ex incidunt voluptas praesentium reiciendis. </p>
-        </div>
     </div>
-    <hr>
-</div> <!-- /container -->
+    
+    <div class="container">
+    
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-md-4 mb-5">
+                <img src="{{url_for('static',filename='cuisine_1.png')}}" class="mb-3" style="width:50px">
+                <h2>Offers</h2>
+                <p class="center">We are proud to offer a dining experience that reflects this vision. Our menu features locally sourced ingredients grown right here on the Red Planet, utilizing innovative cooking techniques to create dishes that are out of this world. Our culinary team has worked tirelessly to craft a menu that is both delicious and sustainable, ensuring that our restaurant helps to contribute to the success of the colony.
+                </p>
+            </div>
+    
+            <div class="col-md-4 mb-5">
+                <img src="{{url_for('static',filename='cuisine_2.png')}}" class="mb-3" style="width:50px">
+                <h2>Technology</h2>
+                <p>
+                    We believe that technology plays a vital role in creating a memorable dining experience, which is why we have created a cutting-edge web platform. Our platform is designed to minimize interactions with waitstaff, allowing customers to have full control over the cuisine offered by the restaurant. Our easy-to-use platform allows customers to place their orders with ease, with the help of QR codes, NFCs, and other possibilities present at the table.
+                    </p>
+            </div>
+    
+            <div class="col-md-4 mb-5">
+                <img src="{{url_for('static',filename='cuisine_3.png')}}" class="mb-3" style="width:50px">
+                <h2>Innovative</h2>
+                <p class="center">At our restaurant, we strive to create an otherworldly ambiance that transports our customers to a different world. Our team has worked hard to design a space that is both inviting and unique, featuring decor and lighting that creates an immersive experience. We are committed to providing our customers with a dining experience they will never forget, and we look forward to serving you soon.</p>
+            </div>
+        </div>
+        <hr>
+    </div>
+    <footer>
+        <br>
+        <p>&copy; 2023 Planitia, All rights reserved</p>
+        <br>
+    </footer>
 
-{% endblock %}
+    <script crossorigin="anonymous" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script crossorigin="anonymous" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script crossorigin="anonymous" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        <script type="text/javascript" src="Scripts/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
+
+</body>
+
+</html>
