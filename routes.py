@@ -83,32 +83,16 @@ def login():
             phone = registerform.phone.data
             x=''.join(random.choices(string.ascii_letters + string.digits, k=5))
             print(x)
-            session['otp']=x
+            # session['otp']=x
             # message = client.messages.create(
             #                   body=x,
             #                   from_='+15674092063',
             #                   to='+919899011495'
             #               )
-            return redirect("/otp/{0}/{1}/{2}/{3}".format(email,pwd,username,phone))
-
-        except InvalidRequestError:
-            db.session.rollback()
-            flash(f"Something went wrong!", "danger")
-        except IntegrityError:
-            db.session.rollback()
-            flash(f"User already exists!.", "warning")
-        except DataError:
-            db.session.rollback()
-            flash(f"Invalid Entry", "warning")
-        except InterfaceError:
-            db.session.rollback()
-            flash(f"Error connecting to the database", "danger")
-        except DatabaseError:
-            db.session.rollback()
-            flash(f"Error connecting to the database", "danger")
-        except BuildError:
-            db.session.rollback()
-            flash(f"An error occured !", "danger")
+            # return redirect("/otp/{0}/{1}/{2}/{3}".format(email,pwd,username,phone))
+        except Exception as e:
+            flash(e, "danger")
+        return("ok")
 
     return render_template("login.html",
                            loginform=loginform,
@@ -118,28 +102,7 @@ def login():
                            btn_action="Login"
                            )
 
-@app.route("/otp/<email>/<pwd>/<username>/<phone>", methods=("GET", "POST"), strict_slashes=False)
-def otp(email,pwd,username,phone):
-    if request.method == "POST":
-        vars = request.form
-        print(vars)
-        if vars['otp']==session['otp']:
-            newuser = User(
-                username=username,
-                email=email,
-                phone=phone,
-                pwd=bcrypt.generate_password_hash(pwd),
-            )
 
-            db.session.add(newuser)
-            db.session.commit()
-            flash(f"Account Succesfully created", "success")
-
-            return redirect(url_for('login'))
-        else:
-            flash(f"Invalid OTP", "danger")
-            return redirect(url_for('login'))
-    return render_template("otp.html")
 
 @app.route("/logout")
 @login_required
@@ -159,9 +122,6 @@ def contact():
     return render_template("contact.html")
 
 
-@app.route("/otp", methods=["GET"], strict_slashes=False)
-def otp():
-    return render_template("otp.html")
 
 
 @app.route("/qrcode", methods=["GET"], strict_slashes=False)
@@ -197,6 +157,9 @@ def checkout():
     pass
     return render_template('checkout.html')
 
+@app.route("/food_menu", methods=("GET", "POST"), strict_slashes=False)
+def food_menu():
+    return render_template('food_menu.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
