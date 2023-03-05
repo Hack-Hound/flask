@@ -95,16 +95,7 @@
         </div>
     </nav>
     <!-- NAVBAR ENDS HERE -->
-    <div class="container">
-        <div class="vertical-center">
-        <button type="button" class="btn btn-secondary" style="z-index:2">Scan QR Code</button>
-        </div>
-    </div>
-    </div>
     <div class="section">
-        <video autoplay loop muted plays-inline>
-            <source src="static/mars_video.mp4" class="back-video" type="video/mp4">
-        </video>
         <div class="video-container">
             <video autoplay loop muted plays-inline>
                 <source src="static/mars_video.mp4" class="back-video" type="video/mp4">
@@ -112,6 +103,10 @@
         </div>
         <div class="color-overlay"></div>
     </div>
+    <div class="row justify-content-center" style="z-index:2 ; position:absolute">
+        <button type="submit" href="/readQr/" class="btn btn-secondary">Scan QR Code</button>
+      </div>
+   
 
     <script crossorigin="anonymous" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
         src="https://code.jquery.com/jquery-3.6.0.js"></script>
