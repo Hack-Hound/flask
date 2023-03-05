@@ -39,15 +39,15 @@
             <form action="{{ request.path }}" method="POST" class="card-body">
                 {{ registerform.csrf_token }}
                 {% with messages = get_flashed_messages(with_categories=true) %}
-                    <!-- Categories: success (green), info (blue), warning (yellow), danger (red) -->
-                    {% if messages %}
-                        {% for category, message in messages %}
-                            <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
-                                {{ message }}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        {% endfor %}
-                    {% endif %}
+                <!-- Categories: success (green), info (blue), warning (yellow), danger (red) -->
+                {% if messages %}
+                {% for category, message in messages %}
+                <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+                {% endif %}
                 {% endwith %}
 
                 <div class="inputBox">
@@ -56,62 +56,61 @@
                     <span>Username</span>
                 </div>
                 {% for error in registerform.username.errors %}
-                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                {{ error }}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        {% endfor%}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    {{ error }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor%}
                 <div class="inputBox">
                     {{ registerform.email(class_="form-control",placeholder="Email")}}
                     <i class="fa-regular fa-envelope"></i>
                     <span>Email address</span>
                 </div>
                 {% for error in registerform.email.errors %}
-                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                {{ error }}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        {% endfor%}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    {{ error }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor%}
                 <div class="inputBox">
                     {{ registerform.pwd(class_="form-control",placeholder="Password")}}
                     <i class="fa-solid fa-lock"></i>
                     <span>Create Password</span>
                 </div>
                 {% for error in registerform.pwd.errors %}
-                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                {{ error }}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div> 
-                        {% endfor%}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    {{ error }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor%}
                 <div class="inputBox">
                     {{ registerform.cpwd(class_="form-control",placeholder="Confirm Password")}}
                     <i class="fa-solid fa-lock"></i>
                     <span>Confirm Password</span>
                 </div>
                 {% for error in registerform.cpwd.errors %}
-                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                {{ error }}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div> 
-                        {% endfor%}
-
-                <div class="inputBox">
-                    {{ registerform.phone(class_="form-control",placeholder="enter phone number")}}
-                    <i class="fa-solid fa-lock"></i>
-                    <span>phone number</span>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    {{ error }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
-                {% for error in registerform.phone.errors %}
-                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                            {{ error }}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div> 
                 {% endfor%}
 
                 <div class="inputBox">
-                    <input type="submit" value="Create Account" href="/otp">
+                    {{ registerform.phone(class_="form-control",placeholder="enter phone")}}
+                    <i class="fa-solid fa-lock"></i>
+                    <span>phone number</span>
+                </div>
+                {% for error in registerform.cpwd.errors %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    {{ error }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor%}
+
+                <div class="inputBox">
+                    <input type="submit" value="Create Account">
                 </div>
                 <p>Already have an Account ? <a href="#" class="login">Log in</a> </p>
-                <a class="btn btn-primary btn-block" href="/" role="button">Home</a>
             </form>
         </div>
 
@@ -157,10 +156,11 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 {% endfor%}
-                <div class="inputBox text-center">
+                <div class="inputBox">
                     <button type="submit" class="btn btn-block btn-primary mb-3"> {{ btn_action }} </button>
                 </div>
                 <p>Not Registered ? <a href="#" class="create">Create an account</a> </p>
+                eate an account</a> </p>
                 <a class="btn btn-primary btn-block" href="/" role="button">Home</a>
         </div>
         </form>
@@ -176,6 +176,3 @@
                 container.classList.remove('signinForm');
             }
         </script>
-</body>
-
-</html>

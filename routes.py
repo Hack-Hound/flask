@@ -83,16 +83,26 @@ def login():
             phone = registerform.phone.data
             x=''.join(random.choices(string.ascii_letters + string.digits, k=5))
             print(x)
+            newuser = User(
+                username=username,
+                email=email,
+                phone=phone,
+                pwd=bcrypt.generate_password_hash(pwd),
+            )
+
+            db.session.add(newuser)
+            db.session.commit()
+            flash(f"Account Succesfully created", "success")
             # session['otp']=x
             # message = client.messages.create(
-            #                   body=x,
+            #                   body="you have successfully created your account",
             #                   from_='+15674092063',
-            #                   to='+919899011495'
+            #                   to=phone
             #               )
             # return redirect("/otp/{0}/{1}/{2}/{3}".format(email,pwd,username,phone))
         except Exception as e:
             flash(e, "danger")
-        return("ok")
+    # return("ok")
 
     return render_template("login.html",
                            loginform=loginform,
@@ -159,7 +169,20 @@ def checkout():
 
 @app.route("/food_menu", methods=("GET", "POST"), strict_slashes=False)
 def food_menu():
-    return render_template('food_menu.html')
+    if request.method == "POST":
+        item = request.form.get('item')
+        print(item)
+        try:
+            items=DB_Manager().QuarryOrderByUser_IDandItem_ID(ess.fl.current_user.get_id(), item)
+        except:
+            items=[]
+        if len(items)==0:
+            print("adding order")
+            DB_Manager().AddOrder(ess.fl.current_user.get_id(), item, ess.fl.current_user.get_id(), ess.fl.current_user.get_id(), 0, 1)
+        # todo save response
+
+        return("response submitted")
+    return render_template('food_menu.html', items=DB_Manager().QuarryAllItem())
 
 if __name__ == "__main__":
     app.run(debug=True)

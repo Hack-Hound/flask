@@ -55,6 +55,12 @@ class DB_Manager:
                                 from ORDERS
                                 where User_ID={0};""".format(ID))
         return ([[s[0] for s in SUB], [s[1] for s in SUB], [s[2] for s in SUB], [s[3] for s in SUB], [s[4] for s in SUB], [s[5] for s in SUB]])
+    
+    def QuarryOrderByUser_IDandItem_ID(self, ID, Item_ID):
+        SUB = self.SqlQuarryExec("""select Order_ID,Item_ID,User_ID,Table_Number,Order_Status,Number
+                                from ORDERS
+                                where User_ID={0} and Item_ID={1};""".format(ID, Item_ID))
+        return ([[s[0] for s in SUB], [s[1] for s in SUB], [s[2] for s in SUB], [s[3] for s in SUB], [s[4] for s in SUB], [s[5] for s in SUB]])
 
  # adding to Record table
 
@@ -71,7 +77,8 @@ class DB_Manager:
             self.conn.execute("INSERT INTO ORDERS (Order_ID,Item_ID,User_ID,Table_Number,Order_Status,Number) VALUES ({0}, {1},{2},{3},{4},{5})".format(
                 Order_ID, Item_ID, User_ID, Table_Number, Order_Status, number))
             self.Commit()
-        except:
+        except Exception as e:
+            print(e)
             self.conn.rollback()
 
     # removing from table
