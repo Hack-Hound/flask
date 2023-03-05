@@ -18,7 +18,6 @@ class DB_Manager:
                 Price       INTEGER     NOT NULL,
                 Description TEXT                        NOT NULL);''')
         print("ITEM Record table created successfully")
-        self.close_conn()
 
         self.conn.cursor().execute('''CREATE TABLE ORDERS
                 (Order_ID       INTEGER     NOT NULL,
