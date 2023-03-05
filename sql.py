@@ -1,12 +1,14 @@
 import sqlite3
 import os
 import time
+import os
+import psycopg2
 
 
 class DB_Manager:
     def __init__(self):
-        self.conn = sqlite3.connect(
-            (str(os.path.dirname(os.path.abspath(__file__)))+'/config.db'))
+        self.conn = psycopg2.connect(os.environ["DATABASE_URL"])
+
 
     # record table creation
     def TableCreation(self):

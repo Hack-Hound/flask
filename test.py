@@ -1,7 +1,10 @@
+import os
 import psycopg2
 
-conn = psycopg2.connect("postgresql://aryamann123_gmail_co:hyWMtGe9y8OsAgaODVkJLQ@cuddly-rugrat-4055.6xw.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full")
+conn = psycopg2.connect(os.environ["DATABASE_URL"])
 
-cur = conn.cursor()
-
-cur.execute("select * from test")
+with conn.cursor() as cur:
+    cur.execute("SELECT now()")
+    res = cur.fetchall()
+    conn.commit()
+    print(res)
