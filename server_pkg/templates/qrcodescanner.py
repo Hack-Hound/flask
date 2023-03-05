@@ -1,4 +1,4 @@
-#import libraries
+{% comment %} #import libraries
 import cv2
 from pyzbar import pyzbar
 # define a video capture object
@@ -26,4 +26,4 @@ def readQr():
 
 
 readQr()
-# After the loop release the cap object
+# After the loop release the cap object {% endcomment %}

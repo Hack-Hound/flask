@@ -141,27 +141,6 @@ def qrcode():
     return render_template("qrcode.html")
 
 
-@app.route("/readQr/")
-def readQr():
-    while True:
-        # Capture the video frame by frame
-        ret, frame = vid.read()
-        data, bbox, straight_qrcode = detector.detectAndDecode(frame)
-        if len(data) > 0:
-            print(data)
-        # Display the resulting frame
-        cv2.imshow('frame', frame)
-        # the 'q' button is set as the
-        # quitting button you may use any
-        # desired button of your choice
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
-    # After the loop release the cap object
-    vid.release()
-    # Destroy all the windows
-    cv2.destroyAllWindows()
-
-
 @app.route("/cart", methods=["GET"], strict_slashes=False)
 @app.route("/cart/<int:src>", methods=["GET"], strict_slashes=False)
 def cart(src=None):
@@ -197,12 +176,14 @@ def food_menu():
         item = request.form.get('item')
         print(item)
         try:
-            items=DB_Manager().QuarryOrderByUser_IDandItem_ID(ess.fl.current_user.get_id(), item)
+            items = DB_Manager().QuarryOrderByUser_IDandItem_ID(
+                ess.fl.current_user.get_id(), item)
         except:
-            items=[]
-        if len(items)==0:
+            items = []
+        if len(items) == 0:
             print("adding order")
-            DB_Manager().AddOrder(ess.fl.current_user.get_id(), item, ess.fl.current_user.get_id(), ess.fl.current_user.get_id(), 0, 1)
+            DB_Manager().AddOrder(ess.fl.current_user.get_id(), item,
+                                  ess.fl.current_user.get_id(), ess.fl.current_user.get_id(), 0, 1)
         # todo save response
 
         return("response submitted")
