@@ -1,3 +1,6 @@
+import string
+import random
+from twilio.rest import Client
 import server_pkg.essentials as ess
 from sql import DB_Manager
 import imghdr
@@ -27,6 +30,10 @@ detector = cv2.QRCodeDetector()
 
 # from flask_dropzone import Dropzone
 # from flask_uploads import UploadSet, configure_uploads, IMAGES, patch_request_class
+
+account_sid = 'AC2396a508b3704642de6e6f0d20346096'
+auth_token = 'b79f835fb0d0600e0c71248b77186502'
+client = Client(account_sid, auth_token)
 
 
 @login_manager.user_loader
@@ -77,35 +84,20 @@ def login():
             email = registerform.email.data
             pwd = registerform.pwd.data
             username = registerform.username.data
-
-            newuser = User(
-                username=username,
-                email=email,
-                pwd=bcrypt.generate_password_hash(pwd),
-            )
-
-            db.session.add(newuser)
-            db.session.commit()
-            flash(f"Account Succesfully created", "success")
-
-        except InvalidRequestError:
-            db.session.rollback()
-            flash(f"Something went wrong!", "danger")
-        except IntegrityError:
-            db.session.rollback()
-            flash(f"User already exists!.", "warning")
-        except DataError:
-            db.session.rollback()
-            flash(f"Invalid Entry", "warning")
-        except InterfaceError:
-            db.session.rollback()
-            flash(f"Error connecting to the database", "danger")
-        except DatabaseError:
-            db.session.rollback()
-            flash(f"Error connecting to the database", "danger")
-        except BuildError:
-            db.session.rollback()
-            flash(f"An error occured !", "danger")
+            phone = registerform.phone.data
+            x = ''.join(random.choices(
+                string.ascii_letters + string.digits, k=5))
+            print(x)
+            # session['otp']=x
+            # message = client.messages.create(
+            #                   body=x,
+            #                   from_='+15674092063',
+            #                   to='+919899011495'
+            #               )
+            # return redirect("/otp/{0}/{1}/{2}/{3}".format(email,pwd,username,phone))
+        except Exception as e:
+            flash(e, "danger")
+        return("ok")
 
     return render_template("login.html",
                            loginform=loginform,
@@ -132,11 +124,6 @@ def contact():
 
         return("response submitted")
     return render_template("contact.html")
-
-
-@app.route("/otp", methods=["GET"], strict_slashes=False)
-def otp():
-    return render_template("otp.html")
 
 
 @app.route("/qrcode", methods=["GET"], strict_slashes=False)
@@ -192,6 +179,11 @@ def about():
 def checkout():
     pass
     return render_template('checkout.html')
+
+
+@app.route("/food_menu", methods=("GET", "POST"), strict_slashes=False)
+def food_menu():
+    return render_template('food_menu.html')
 
 
 if __name__ == "__main__":

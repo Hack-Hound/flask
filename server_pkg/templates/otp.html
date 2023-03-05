@@ -36,7 +36,7 @@
     <div class="container">
         <div class="form signup">
             <h2>Enter OTP</h2>
-            <form action="/" method="POST" class="card-body">
+            <form action="{{ request.path }}" method="POST" class="card-body">
                 <div class="inputBox">
                     <i class="fa-duotone fa-user-bounty-hunter"></i>
                     <input type="text" id="otp" name="otp" placeholder='Otp'>
