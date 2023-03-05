@@ -137,6 +137,10 @@ def contact():
 def qrcode():
     return render_template("qrcode.html")
 
+@app.route("/cards", methods=["GET"], strict_slashes=False)
+def cards():
+    return render_template("cards.html")
+
 
 @app.route("/cart", methods=["GET"], strict_slashes=False)
 @app.route("/cart/<int:src>", methods=["GET"], strict_slashes=False)
