@@ -39,16 +39,33 @@
 
 </head>
 
-<body style="background-color: #190703">
+<body style=" background-color:#190703">
+    <div class="button-container">
+        <button class="button-left glow-on-hover">Left Button</button>
+        <button class="button-right glow-on-hover" href="/food_menu.html">Right Button</button>
+      </div>
     
     <!-- NAVBAR BEGIN HERE -->
     <nav class="font-weight-bold navbar navbar-expand-lg sticky-top navbar-light bg-danger">
-        <a class="navbar-brand" href="/">Planitia</a>
+        <a class="navbar-brand" >Planitia</a>
 
         <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
             class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
             <span class="navbar-toggler-icon"></span>
         </button>
+
+        <!-- <div class="section">
+            <video id="background-video" autoplay loop muted>
+                <source src="{{url_for('static',filename='video.mp4')}}" type="video/mp4">
+            </video>
+        </div>
+        <div class="video-container">
+            <video id="background-video" autoplay loop muted>
+                <source src="{{url_for('static',filename='video.mp4')}}" type="video/mp4">
+            </video>
+        </div>  
+        <div class="color-overlay">
+        </div> -->
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
@@ -84,7 +101,7 @@
             {% else %}
             <a class="btn btn-primary ml-3" id="signinbtn" href="/login">Sign In</a>
 
-            <a class="btn btn-primary ml-3" id="signupbtn" href="/register">Sign Up</a>
+            <a class="btn btn-primary ml-3" id="signupbtn" href="/login#">Sign Up</a>
             {% endif %}
         </div>
     </nav>
@@ -109,10 +126,8 @@
         src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
     <script crossorigin="anonymous" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
         src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
         <script type="text/javascript" src="Scripts/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
-
 </body>
 
 </html>

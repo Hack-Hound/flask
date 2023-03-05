@@ -14,7 +14,39 @@ body {
     min-height: 100vh;
     overflow: hidden;
 }
-
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: fixed;
+    bottom: 300px;
+    left: 0;
+  }
+  
+  .button-left {
+    margin-right: 10px;
+  }
+  
+  .button-right {
+    margin-left: 10px;
+  }
+  
+  .glow-on-hover {
+    font-size: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    background-color: #007bff;
+    box-shadow: 0 0 10px #007bff;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .glow-on-hover:hover {
+    background-color: #0069d9;
+    box-shadow: 0 0 20px #0069d9;
+  }
+  
 .planet {
     display: flex;
     flex-direction: column;
