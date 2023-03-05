@@ -20,9 +20,6 @@ import time
 import json
 from importlib.resources import path
 from dataclasses import dataclass
-import cv2
-vid = cv2.VideoCapture(0)
-detector = cv2.QRCodeDetector()
 # todo db mo=igration
 # todo add twilio
 # todo cohere
