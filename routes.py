@@ -132,6 +132,11 @@ def contact():
     return render_template("contact.html")
 
 
+@app.route("/otp", methods=["GET"], strict_slashes=False)
+def otp():
+    return render_template("otp.html")
+
+
 @app.route("/qrcode", methods=["GET"], strict_slashes=False)
 def qrcode():
     return render_template("qrcode.html")
