@@ -46,35 +46,24 @@ def index():
 
 @app.route("/login", methods=("GET", "POST"), strict_slashes=False)
 def login():
-    form = login_form()
+    loginform = login_form()
+    registerform = register_form()
 
-    if form.validate_on_submit():
+    if loginform.validate_on_submit():
         try:
-            user = User.query.filter_by(email=form.email.data).first()
-            if check_password_hash(user.pwd, form.pwd.data):
+            user = User.query.filter_by(email=loginform.email.data).first()
+            if check_password_hash(user.pwd, loginform.pwd.data):
                 login_user(user)
                 return redirect(url_for('index'))
             else:
                 flash("Invalid Username or password!", "danger")
         except Exception as e:
             flash(e, "danger")
-
-    return render_template("login.html",
-                           form=form,
-                           text="Login",
-                           title="Login",
-                           btn_action="Login"
-                           )
-
-
-@app.route("/register", methods=("GET", "POST"), strict_slashes=False)
-def register():
-    form = register_form()
-    if form.validate_on_submit():
+    if registerform.validate_on_submit():
         try:
-            email = form.email.data
-            pwd = form.pwd.data
-            username = form.username.data
+            email = registerform.email.data
+            pwd = registerform.pwd.data
+            username = registerform.username.data
 
             newuser = User(
                 username=username,
@@ -104,12 +93,16 @@ def register():
         except BuildError:
             db.session.rollback()
             flash(f"An error occured !", "danger")
-    return render_template("register.html",
-                           form=form,
-                           text="Create account",
-                           title="Register",
-                           btn_action="Register account"
+
+    return render_template("login.html",
+                           loginform=loginform,
+                           registerform=registerform,
+                           text="Login",
+                           title="Login",
+                           btn_action="Login"
                            )
+
+
 
 
 @app.route("/logout")
@@ -130,14 +123,29 @@ def admin_dashboard(check=None):
     return("ok")
 
 
-@app.route("/contact", methods=["GET"], strict_slashes=False)
+@app.route("/contact", methods=("GET","POST"), strict_slashes=False)
 def contact():
+    if request.method == "POST":
+        vars = request.form
+        print(vars)
+        return("response submitted")
     return render_template("contact.html")
 
 
 @app.route("/cart", methods=["GET"], strict_slashes=False)
-def cart():
-    pass
+@app.route("/cart/<int:src>", methods=["GET"], strict_slashes=False)
+def cart(src=None):
+    if src == 1:
+        type=request.args.get('type')
+        item_id=request.args.get('item_id')
+        if type=="add":
+            DB_Manager().AddToCart(ess.fl.current_user.get_id(),item_id)
+        elif type=="remove":
+            DB_Manager().RemoveFromCart(ess.fl.current_user.get_id(),item_id)
+        elif type=="delete":
+            DB_Manager().DeleteFromCart(ess.fl.current_user.get_id(),item_id)
+        return render_template('cart.html',items=DB_Manager().QuarryOrderByUser_ID(ess.fl.current_user.get_id()))
+    return render_template('cart.html',items=DB_Manager().QuarryOrderByUser_ID(ess.fl.current_user.get_id()))
     return("ok")
 
 
@@ -150,7 +158,7 @@ def about():
 @app.route("/checkout", methods=("GET", "POST"), strict_slashes=False)
 def checkout():
     pass
-    return("ok")
+    return render_template('checkout.html')
 
 
 if __name__ == "__main__":
