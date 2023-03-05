@@ -27,6 +27,7 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
     <title>Planitia | Eat-in | Take Away</title>
+    <link rel="stylesheet" href={{url_for('static',filename='style/style.css' )}}">
     <link rel="stylesheet" href="{{url_for('static',filename='styles/bootstrap.min.css')}}">
     <link rel="icon" type="image/x-icon" href="{{url_for('static',filename='mars_favicon.png')}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -94,8 +95,11 @@
         </div>
     </nav>
     <!-- NAVBAR ENDS HERE -->
-    <div class="text-center">
+    <div class="container">
+        <div class="vertical-center">
         <button type="button" class="btn btn-secondary" style="z-index:2">Scan QR Code</button>
+        </div>
+    </div>
     </div>
     <div class="section">
         <video autoplay loop muted plays-inline>
