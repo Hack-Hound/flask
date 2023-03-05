@@ -1,7 +1,8 @@
-#todo db mo=igration
-#todo add twilio
-#todo cohere
-#todo add feedback table
+import cv2
+# todo db mo=igration
+# todo add twilio
+# todo cohere
+# todo add feedback table
 
 from dataclasses import dataclass
 from importlib.resources import path
@@ -140,8 +141,6 @@ def otp(email,pwd,username,phone):
             return redirect(url_for('login'))
     return render_template("otp.html")
 
-
-
 @app.route("/logout")
 @login_required
 def logout():
@@ -149,9 +148,7 @@ def logout():
     return redirect(url_for('login'))
 
 
-
-
-@app.route("/contact", methods=("GET","POST"), strict_slashes=False)
+@app.route("/contact", methods=("GET", "POST"), strict_slashes=False)
 def contact():
     if request.method == "POST":
         vars = request.form
@@ -162,20 +159,30 @@ def contact():
     return render_template("contact.html")
 
 
+@app.route("/otp", methods=["GET"], strict_slashes=False)
+def otp():
+    return render_template("otp.html")
+
+
+@app.route("/qrcode", methods=["GET"], strict_slashes=False)
+def qrcode():
+    return render_template("qrcode.html")
+
+
 @app.route("/cart", methods=["GET"], strict_slashes=False)
 @app.route("/cart/<int:src>", methods=["GET"], strict_slashes=False)
 def cart(src=None):
     if src == 1:
-        type=request.args.get('type')
-        item_id=request.args.get('item_id')
-        if type=="add":
-            DB_Manager().AddToCart(ess.fl.current_user.get_id(),item_id)
-        elif type=="remove":
-            DB_Manager().RemoveFromCart(ess.fl.current_user.get_id(),item_id)
-        elif type=="delete":
-            DB_Manager().DeleteFromCart(ess.fl.current_user.get_id(),item_id)
-        return render_template('cart.html',items=DB_Manager().QuarryOrderByUser_ID(ess.fl.current_user.get_id()))
-    return render_template('cart.html',items=DB_Manager().QuarryOrderByUser_ID(ess.fl.current_user.get_id()))
+        type = request.args.get('type')
+        item_id = request.args.get('item_id')
+        if type == "add":
+            DB_Manager().AddToCart(ess.fl.current_user.get_id(), item_id)
+        elif type == "remove":
+            DB_Manager().RemoveFromCart(ess.fl.current_user.get_id(), item_id)
+        elif type == "delete":
+            DB_Manager().DeleteFromCart(ess.fl.current_user.get_id(), item_id)
+        return render_template('cart.html', items=DB_Manager().QuarryOrderByUser_ID(ess.fl.current_user.get_id()))
+    return render_template('cart.html', items=DB_Manager().QuarryOrderByUser_ID(ess.fl.current_user.get_id()))
     return("ok")
 
 

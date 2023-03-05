@@ -2,13 +2,16 @@
 <html lang="en">
 
 <head>
-    
+
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/qrcode.css')}}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" >
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>	
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+        integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
+        crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -24,12 +27,14 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
     <title>Planitia | Eat-in | Take Away</title>
+    <link rel="stylesheet" href={{url_for('static',filename='style/style.css' )}}">
     <link rel="stylesheet" href="{{url_for('static',filename='styles/bootstrap.min.css')}}">
     <link rel="icon" type="image/x-icon" href="{{url_for('static',filename='mars_favicon.png')}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/centerplanet.css')}}"> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/centerplanet.css')}}">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+Balinese:wght@500&family=Poppins:wght@600&display=swap"
@@ -42,7 +47,7 @@
 </head>
 
 <body style="background-color: #190703">
-    
+
     <!-- NAVBAR BEGIN HERE -->
     <nav class="font-weight-bold navbar navbar-expand-lg sticky-top navbar-light bg-danger">
         <a class="navbar-brand" href="/">Planitia</a>
@@ -55,8 +60,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" href="/">Home<span
-                            class="sr-only">(current)</span></a>
+                    <a class="nav-link active" href="/">Home<span class="sr-only">(current)</span></a>
                 </li>
 
                 <li class="nav-item">
@@ -76,13 +80,14 @@
 
             {% if current_user.is_authenticated %}
             <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Welcome {{current_user.username}}
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Welcome {{current_user.username}}
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="/logout">Logout</a>
+                    <a class="dropdown-item" href="/logout">Logout</a>
                 </div>
-              </div>
+            </div>
             {% else %}
 
             <a class="btn btn-primary ml-3" id="signinbtn" href="/login">Sign In</a>
@@ -90,20 +95,24 @@
         </div>
     </nav>
     <!-- NAVBAR ENDS HERE -->
-    <!-- Plant starts here -->
-    <div class ="planet marsPlanet">
-        
-        <div class="container"></div>
-        <div class ="loader"><span></span></div>
-        <div class="mars"></div>
-        
+    <div class="container">
+        <div class="vertical-center">
+        <button type="button" class="btn btn-secondary" style="z-index:2">Scan QR Code</button>
+        </div>
     </div>
-    <!-- Planet ends here -->
-    <footer>
-        <br>
-        <p>&copy; 2023 Planitia, All rights reserved</p>
-        <br>
-    </footer>
+    </div>
+    <div class="section">
+        <video autoplay loop muted plays-inline>
+            <source src="static/mars_video.mp4" class="back-video" type="video/mp4">
+        </video>
+        <div class="video-container">
+            <video autoplay loop muted plays-inline>
+                <source src="static/mars_video.mp4" class="back-video" type="video/mp4">
+            </video>
+        </div>
+        <div class="color-overlay"></div>
+    </div>
+
     <script crossorigin="anonymous" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
         src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script crossorigin="anonymous" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
@@ -113,7 +122,6 @@
     <script type="text/javascript">
         <script type="text/javascript" src="Scripts/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
-
 </body>
 
 </html>

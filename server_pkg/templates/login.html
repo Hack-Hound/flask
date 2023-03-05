@@ -108,9 +108,10 @@
                 {% endfor%}
 
                 <div class="inputBox">
-                    <input type="submit" value="Create Account">
+                    <input type="submit" value="Create Account" href="/otp">
                 </div>
                 <p>Already have an Account ? <a href="#" class="login">Log in</a> </p>
+                <a class="btn btn-primary btn-block" href="/" role="button">Home</a>
             </form>
         </div>
 
@@ -156,10 +157,11 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 {% endfor%}
-                <div class="inputBox">
+                <div class="inputBox text-center">
                     <button type="submit" class="btn btn-block btn-primary mb-3"> {{ btn_action }} </button>
                 </div>
                 <p>Not Registered ? <a href="#" class="create">Create an account</a> </p>
+                <a class="btn btn-primary btn-block" href="/" role="button">Home</a>
         </div>
         </form>
         <script>
