@@ -29,6 +29,7 @@ class register_form(FlaskForm):
     )
     email = StringField(validators=[InputRequired(), Email(), Length(1, 64)])
     pwd = PasswordField(validators=[InputRequired(), Length(8, 72)])
+    phone = StringField(validators=[InputRequired(), Length(10, 10)])
     cpwd = PasswordField(
         validators=[
             InputRequired(),

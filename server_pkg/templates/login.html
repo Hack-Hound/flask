@@ -94,6 +94,19 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div> 
                         {% endfor%}
+
+                <div class="inputBox">
+                    {{ registerform.phone(class_="form-control",placeholder="enter phone number")}}
+                    <i class="fa-solid fa-lock"></i>
+                    <span>phone number</span>
+                </div>
+                {% for error in registerform.phone.errors %}
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            {{ error }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div> 
+                {% endfor%}
+
                 <div class="inputBox">
                     <input type="submit" value="Create Account">
                 </div>
